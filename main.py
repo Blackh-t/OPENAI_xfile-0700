@@ -24,7 +24,7 @@ def find_chat(file_name: str) -> str:
 
     # Check if chat name is defined
     for filename in os.listdir("chatlog/"):
-        if filename == file_name + ".md":
+        if filename == file_name + ".txt":
             print("Resume old chat: " + file_name)
 
             # Fetch
@@ -100,8 +100,8 @@ def main():
         user_feedback = input("Input (type 'new' to reset, or add comments): ")
 
         # Reset memory buffer if input == "new"
-        if user_feedback.lower() == "new":
-            store_chat(chat_name + ".md", user_input)
+        if user_feedback == "new":
+            store_chat(chat_name + ".txt", user_input)
             user_input = ""
         else:
             user_input += "\nInput: " + user_feedback
