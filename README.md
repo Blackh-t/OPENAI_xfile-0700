@@ -23,7 +23,7 @@ Kjør følgende kommandoer i terminalen:
     python3 main.py
 ```
 
-Alternativ 2: Opprett en Bash-kommando
+Alternativ 2: 
 Opprett en tilpasset Bash-kommando ved å legge til følgende funksjon i ~/.bashrc:
 
 ```bash
