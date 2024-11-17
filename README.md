@@ -28,7 +28,7 @@ Opprett en tilpasset Bash-kommando ved å legge til følgende funksjon i ~/.bash
 
 ```bash
 chat() {
-    d ~/git/chatgtp/
+    cd ~/git/blackh-t/OPENAI_xfile-0700/
     python3 -m venv myenv
     source myenv/bin/activate
     pip install openai
