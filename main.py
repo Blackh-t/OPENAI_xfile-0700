@@ -1,4 +1,6 @@
 import os
+import subprocess
+import warnings
 
 import openai  # Import OpenAI library
 
@@ -41,6 +43,22 @@ def store_chat(file_name: str, chat: str) -> None:
         print("Chat saved")
 
 
+def TTS(text: str) -> None:
+    response = client.audio.speech.create(
+        model="tts-1-hd",
+        voice="echo",
+        input=text,
+    )
+    warnings.filterwarnings("ignore")
+    response.stream_to_file("speech.mp3")
+
+    subprocess.Popen(
+        ["mpg123", "speech.mp3"],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+
+
 def main():
     """
     Main function to interact with the user and generate philosophy-related questions
@@ -71,6 +89,9 @@ def main():
         # Extract the AI's response
         ai_response = chat_completion.choices[0].message.content
         print(f"\n\n{LIGHT_BLUE}{ai_response}{RESET}\n\n")
+
+        # speech
+        TTS(ai_response)
 
         # Update Memory
         user_input += ai_response + "\n"
