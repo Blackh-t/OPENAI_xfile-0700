@@ -1,27 +1,59 @@
+import os
+
 import openai  # Import OpenAI library
+
 from data import DATA
 
 # ANSI color codes for colored output
-LIGHT_BLUE = "\033[38;2;173;216;230m" 
-RESET = "\033[0m"  
+LIGHT_BLUE = "\033[38;2;173;216;230m"
+RESET = "\033[0m"
 
-
-OPENAI_API_KEY = ""  # Add your API key here
 
 # Initialize OpenAI client
-client = openai.OpenAI(api_key=OPENAI_API_KEY)
+client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Model configurations
 EMBEDDING_MODEL = "text-embedding-ada-002"
 LLM = "gpt-4o-mini"
 
+
+def find_chat(file_name: str) -> str:
+    content = ""
+
+    # Check if chat name is defined
+    for filename in os.listdir("chatlog/"):
+        if filename == file_name + ".md":
+            print("Resume old chat: " + file_name)
+
+            # Fetch
+            with open("chatlog/" + filename, "r") as file:
+                content = file.read()
+    return content
+
+
+def store_chat(file_name: str, chat: str) -> None:
+    # Save chat
+    path = "chatlog/"
+    filename = path + file_name
+    with open(filename, "w") as file:
+        # Skriver innholdet av variabelen til filen
+        file.write(chat)
+        print("Chat saved")
+
+
 def main():
     """
-    Main function to interact with the user and generate philosophy-related questions 
+    Main function to interact with the user and generate philosophy-related questions
     using OpenAI's chat completion model.
     """
     # Input from the user
-    user_input = input("Enter a string to start the conversation: ")
+    chat_name = input("Enter chat name: ")
+    content = find_chat(chat_name)
+
+    user_input = (
+        "Velg et tilfelle tema og forsatt på tidligere samtale hvis det finnes: "
+        + content
+    )
 
     # Continuous loop for interactive Q&A
     while True:
@@ -48,10 +80,11 @@ def main():
 
         # Reset memory buffer if input == "new"
         if user_feedback.lower() == "new":
+            store_chat(chat_name + ".md", user_input)
             user_input = ""
         else:
-            user_input += user_feedback
+            user_input += "\nInput: " + user_feedback
+
 
 if __name__ == "__main__":
     main()
-
