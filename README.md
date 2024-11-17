@@ -9,13 +9,16 @@ Følg disse trinnene for å sette opp og bruke `chat`-kommandoen.
 git clone https://github.com/Blackh-t/OPENAI_xfile-0700.git ~/git/blackh-t
 ```
 
-Legg til OpenAI API nøkkel fra [OpenAI](https://platform.openai.com/) i main.py
+Lagre OpenAI API nøkkel fra [OpenAI](https://platform.openai.com/) 
+```bash
+export OPENAI_API_KEY="ditt API her"
+```
 
 ### 2. Sett opp miljø og kjør programmet
 Alternativ 1: Manuell kjøring
 Kjør følgende kommandoer i terminalen:
 ```bash
-    cd ~/git/blackh-t/OPENAI_xfile-0700/
+    cd ~/git/blackh-t/
     python3 -m venv myenv
     source myenv/bin/activate
     pip install openai
@@ -28,7 +31,7 @@ Opprett en tilpasset Bash-kommando ved å legge til følgende funksjon i ~/.bash
 
 ```bash
 chat() {
-    cd ~/git/blackh-t/OPENAI_xfile-0700/
+    cd ~/git/blackh-t/
     python3 -m venv myenv
     source myenv/bin/activate
     pip install openai
