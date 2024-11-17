@@ -6,7 +6,7 @@ Følg disse trinnene for å sette opp og bruke `chat`-kommandoen.
 
 - Klon repo:
 ```bash
-git clone https://github.com/Blackh-t/OPENAI_xfile-0700.git ~/git
+git clone https://github.com/Blackh-t/OPENAI_xfile-0700.git ~/git/blackh-t
 ```
 
 Legg til OpenAI API nøkkel fra [OpenAI](https://platform.openai.com/) i main.py
