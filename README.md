@@ -15,7 +15,7 @@ Legg til OpenAI API nøkkel fra [OpenAI](https://platform.openai.com/) i main.py
 Alternativ 1: Manuell kjøring
 Kjør følgende kommandoer i terminalen:
 ```bash
-    cd ~/git/OPENAI_xfile-0700/
+    cd ~/git/blackh-t/OPENAI_xfile-0700/
     python3 -m venv myenv
     source myenv/bin/activate
     pip install openai
