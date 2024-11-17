@@ -38,7 +38,7 @@ chat() {
 ```
 
 Bruk av chat
-Når funksjonen er konfigurert, kan du bruke kommandoen slik:
+Når funksjonen er konfigurert, kan du bruke kommandoen slik i terminal:
 ```bash
 chat
 ```
